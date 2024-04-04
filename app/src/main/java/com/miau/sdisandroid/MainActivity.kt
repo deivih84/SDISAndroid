@@ -28,15 +28,15 @@ class MainActivity : AppCompatActivity() {
 
 
         //TODO meter esto en funciones y cambiarlo de sitio
-        findViewById<RadioButton>(R.id.radioNodoPadre).setOnCheckedChangeListener { _, _ ->
-            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.INVISIBLE
-            findViewById<EditText>(R.id.cantidadNodos).visibility = View.INVISIBLE
+        findViewById<RadioButton>(R.id.radioNodoPadre).setOnClickListener {
+            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.GONE
+            findViewById<EditText>(R.id.cantidadNodos).visibility = View.GONE
         }
-        findViewById<RadioButton>(R.id.radioNodoHijo).setOnCheckedChangeListener { _, _ ->
-            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.VISIBLE
-            findViewById<EditText>(R.id.cantidadNodos).visibility = View.VISIBLE
+        findViewById<RadioButton>(R.id.radioNodoHijo).setOnClickListener {
+            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.GONE
+            findViewById<EditText>(R.id.cantidadNodos).visibility = View.GONE
         }
-        findViewById<RadioButton>(R.id.radioDDos).setOnCheckedChangeListener { _, _ ->
+        findViewById<RadioButton>(R.id.radioDDos).setOnClickListener {
             findViewById<TextView>(R.id.textCantidadNodos).visibility = View.VISIBLE
             findViewById<EditText>(R.id.cantidadNodos).visibility = View.VISIBLE
         }

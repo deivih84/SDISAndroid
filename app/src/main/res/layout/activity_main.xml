@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="31dp"
             android:fontFamily="@font/lexend_medium"
-            android:text=" Android Version 0.2"
+            android:text=" Android Version 0.3"
             android:textColor="#79C157"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +51,7 @@
 
         <View
             android:id="@+id/divider"
-            android:layout_width="392dp"
+            android:layout_width="360dp"
             android:layout_height="2dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -62,15 +62,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="139dp">
+        android:layout_height="151dp">
 
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="140dp"
             android:layout_height="91dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.06"
+            app:layout_constraintEnd_toStartOf="@+id/divider3"
+            app:layout_constraintHorizontal_bias="0.28"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.69">
@@ -108,12 +108,12 @@
             app:layout_constraintEnd_toEndOf="@+id/radioGroup"
             app:layout_constraintStart_toStartOf="@+id/radioGroup"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
+            app:layout_constraintVertical_bias="0.45" />
 
         <View
             android:id="@+id/divider3"
             android:layout_width="1dp"
-            android:layout_height="100dp"
+            android:layout_height="90dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -123,16 +123,18 @@
 
         <EditText
             android:id="@+id/cantidadNodos"
-            android:layout_width="165dp"
+            android:layout_width="90dp"
             android:layout_height="44dp"
             android:ems="10"
             android:inputType="number"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.35"
+            app:layout_constraintHorizontal_bias="0.22"
             app:layout_constraintStart_toEndOf="@+id/divider3"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintVertical_bias="0.68"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textCantidadNodos"
@@ -142,12 +144,14 @@
             android:fontFamily="@font/alata"
             android:text="Cantidad de Nodos"
             android:textSize="12sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/cantidadNodos"
             app:layout_constraintEnd_toEndOf="@+id/cantidadNodos"
             app:layout_constraintHorizontal_bias="0.09"
             app:layout_constraintStart_toStartOf="@+id/cantidadNodos"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -157,7 +161,7 @@
 
         <View
             android:id="@+id/divider2"
-            android:layout_width="380dp"
+            android:layout_width="340dp"
             android:layout_height="1dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintBottom_toBottomOf="parent"
