@@ -38,7 +38,7 @@ object LanzadorEpico {
             when (comando[0]) { // Una vez más kotlin demostrando porque es mucho mejor que java
                 "log" -> println(nuevoNodo!!.log())
                 "padre" -> nuevoNodo!!.conexionPadre(comando[1], comando[2].toInt(), comando[3])
-                //"nodo" -> nuevoNodo!!.getNodo(comando[1], nuevoNodo.ip, nuevoNodo.puerto)
+//                "nodo" -> nuevoNodo!!.getNodo(comando[1], nuevoNodo.ip, nuevoNodo.puerto)
 //                "multicast" -> nuevoNodo!!.mandaMensaje(comando[1], comando[2].toInt(), MensajeProtocolo.multicast(nuevoNodo.ip, comando[3], comando[4].toInt(), comando[5]))
                 "nNodos" -> println("Hay " + nuevoNodo!!.numNodos + " nodos conectados actualmente.")
 //                "transmision" -> nuevoNodo!!.mandaMensaje(comando[1], comando[2].toInt(), MensajeProtocolo.transmission(nuevoNodo.ip, comando[3], comando[4].toInt()))

@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="31dp"
             android:fontFamily="@font/lexend_medium"
-            android:text=" Android Version 0.3"
+            android:text=" Android Version 0.4"
             android:textColor="#79C157"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -68,6 +68,7 @@
             android:id="@+id/radioGroup"
             android:layout_width="140dp"
             android:layout_height="91dp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/divider3"
             app:layout_constraintHorizontal_bias="0.28"
@@ -168,6 +169,141 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="257dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutDatosHijo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <EditText
+                android:id="@+id/editNomHijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:ems="10"
+                android:hint="Nombre/IP"
+                android:inputType="text"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.16"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/labelHijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datos del nodo a crear"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/editNomHijo"
+                app:layout_constraintEnd_toEndOf="@+id/editNomHijo"
+                app:layout_constraintStart_toStartOf="@+id/editNomHijo"
+                tools:visibility="visible" />
+
+            <EditText
+                android:id="@+id/editPortHijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Puerto"
+                android:inputType="number"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/editNomHijo"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/editNomHijo"
+                app:layout_constraintTop_toBottomOf="@+id/editNomHijo"
+                tools:visibility="visible" />
+
+            <EditText
+                android:id="@+id/editTokHijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Token"
+                android:inputType="text"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/editPortHijo"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/editPortHijo"
+                app:layout_constraintTop_toBottomOf="@+id/editPortHijo"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutDatosPadre"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <EditText
+                android:id="@+id/editNomPadre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:ems="10"
+                android:hint="Nombre/IP"
+                android:inputType="text"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.16"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/labelPadre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datos del nodo padre"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/editNomPadre"
+                app:layout_constraintEnd_toEndOf="@+id/editNomPadre"
+                app:layout_constraintStart_toStartOf="@+id/editNomPadre"
+                tools:visibility="visible" />
+
+            <EditText
+                android:id="@+id/editPortPadre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Puerto"
+                android:inputType="number"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/editNomPadre"
+                app:layout_constraintStart_toStartOf="@+id/editNomPadre"
+                app:layout_constraintTop_toBottomOf="@+id/editNomPadre"
+                tools:visibility="visible" />
+
+            <EditText
+                android:id="@+id/editTokPadre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Token"
+                android:inputType="text"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/editPortPadre"
+                app:layout_constraintStart_toStartOf="@+id/editPortPadre"
+                app:layout_constraintTop_toBottomOf="@+id/editPortPadre"
+                tools:visibility="visible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
