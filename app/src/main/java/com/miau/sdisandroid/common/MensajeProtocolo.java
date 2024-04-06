@@ -1,4 +1,4 @@
-package moduloBasico.common;
+package com.miau.sdisandroid.common;
 
 public final class MensajeProtocolo implements java.io.Serializable {
     private static final long serialVersionUID = 987654321L;

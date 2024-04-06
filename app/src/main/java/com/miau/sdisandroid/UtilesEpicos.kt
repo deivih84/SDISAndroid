@@ -1,4 +1,4 @@
-package moduloBasico
+package com.miau.sdisandroid
 
 import java.net.ServerSocket
 import java.net.Socket
@@ -82,5 +82,11 @@ object Utiles {
                 
                 """.trimIndent()
         )
+    }
+    enum class Servicio {
+        NODOHIJO,
+        NODOPADRE,
+        ATAQUEDDOS,
+        INDEFINIDO
     }
 }

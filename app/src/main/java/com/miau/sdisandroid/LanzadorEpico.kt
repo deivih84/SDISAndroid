@@ -1,7 +1,5 @@
-package java.moduloBasico
+package com.miau.sdisandroid
 
-import moduloBasico.Nodo
-import moduloBasico.Utiles
 import kotlin.time.measureTime
 
 /*
@@ -12,28 +10,30 @@ Args[0] = nombre, Args[1] = Puerto, Args[2] = Token del hijo
  */
 object LanzadorEpico {
     @JvmStatic
-    fun main(args: Array<String>) {
-        // Nuevo nodo 😎
-        var nuevoNodo: Nodo? = null
-        try {
-            if (args.size != 7) nuevoNodo = Nodo(args[0], args[1].toInt(), args[2])
-        } catch (e: java.lang.Exception) {
-            e.printStackTrace(System.err)
+    fun lanzador(args: Array<String?>, servicio: Utiles.Servicio) { // PUEDE QUE LOS ARGUMENTOS SEAN NULOS No sabemos 🤔
+        println("HOLI LANZADOR $servicio")
+        repeat(7) {
+            println(args[it])
         }
-//        \033[1m\033[38;2;255;87;51mAyuda sobre los comandos 😀\033[0m
+
+        // Nuevo nodo 😎
+/*        val nuevoNodo = nuevoNodo(args[0]!!, args[1]!!.toInt(), args[2]!!)
         val tiempo = measureTime {
-            when (args.size) {
-                6 -> nuevoNodo!!.conexionPadre(args[3], args[4].toInt(), args[5])  // Argumentos del padre...
-                7 -> repeat(args[6].toInt()) { // nombre = nombre + iterador; puerto = puerto + iterador; clave es la misma
+            when (servicio) {
+                Utiles.Servicio.NODOHIJO -> nuevoNodo!!.conexionPadre(args[3], args[4]!!.toInt(), args[5])  // Argumentos del padre...
+                Utiles.Servicio.ATAQUEDDOS -> repeat(args[6]!!.toInt()) { // nombre = nombre + iterador; puerto = puerto + iterador; clave es la misma
                     println("Creado el hijo: " + args[0] + it + ". Disfrute 😊")
-                    val nodoi = Nodo(args[0] + it, 0, args[2])
-                    nodoi.conexionPadre(args[3], args[4].toInt(), args[5])
+                    val nodoi = Nodo(args[0] + it, 0, args[2]!!)
+                    nodoi.conexionPadre(args[3], args[4]!!.toInt(), args[5])
                 }
+
+                Utiles.Servicio.NODOPADRE -> TODO()
+                Utiles.Servicio.INDEFINIDO -> TODO()
             }
         }
-        println("Tiempo en lanzar: $tiempo \n")
+        println("Tiempo en lanzar: $tiempo \n")*/
 
-        while (true) {
+/*        while (true) {
             val comando = readln().trim().split(" ")
             when (comando[0]) { // Una vez más kotlin demostrando porque es mucho mejor que java
                 "log" -> println(nuevoNodo!!.log())
@@ -48,6 +48,16 @@ object LanzadorEpico {
 
                 else -> println("Comando incorrecto, si no lo tienes claro prueba a escribir \"help\"😉\n")
             }
+        }*/
+    }
+    fun nuevoNodo(nombre: String, puerto: Int, token: String): Nodo? {
+        var nuevoNodo: Nodo? = null
+        try { // Se crea el nuevo nodo a menos que se quiera un ataque DDos
+            nuevoNodo = Nodo(nombre, puerto, token)
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace(System.err)
+
         }
+        return nuevoNodo
     }
 }

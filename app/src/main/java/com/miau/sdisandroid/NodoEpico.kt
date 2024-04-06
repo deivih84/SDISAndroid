@@ -1,7 +1,7 @@
-package moduloBasico
+package com.miau.sdisandroid
 
-import moduloBasico.common.MensajeProtocolo
-import moduloBasico.common.Primitiva
+import com.miau.sdisandroid.common.MensajeProtocolo
+import com.miau.sdisandroid.common.Primitiva
 import java.net.*
 import java.nio.charset.StandardCharsets
 import java.util.Scanner
@@ -12,14 +12,12 @@ import java.util.stream.Collectors
 // La clase NODO abre un servidor y un sirviente a la vez
 // Hay un sirviente en cada máquina
 class Nodo(// Obtiene nombre del nodo
-    val nombre: String, puerto: Int, tokenSeguridad: String
-) {
+    val nombre: String, puerto: Int, tokenSeguridad: String) {
     private val tokenSeguridad // Nombre del nodo y tokenseguridad que se usa para comprobar que el nodo que se quiere conectar es valido
             : String
 
     // Obtiene el puerto del servidor
-    val pUERTO // Puerto del servidor
-            : Int
+    private val puerto: Int // Puerto del servidor
     private val serverSocket // Socket del servidor
             : ServerSocket
     private val variables // Variables del nodo
@@ -35,7 +33,7 @@ class Nodo(// Obtiene nombre del nodo
     // Inicializacion del Primer Nodo
     init {
         serverSocket = ServerSocket(puerto)
-        pUERTO = serverSocket.getLocalPort()
+        this.puerto = serverSocket.getLocalPort()
         variables = VariablesNodo()
         descendientes = ConcurrentHashMap()
         padre = null
@@ -94,7 +92,7 @@ class Nodo(// Obtiene nombre del nodo
         try {
             connection.close()
             println("Hasta luego: $connection")
-        } catch (e: Exception) {
+        } catch (_: Exception) {
         }
         if (connection == padre) {
             padre =
@@ -190,7 +188,7 @@ class Nodo(// Obtiene nombre del nodo
     }
 
     @Throws(Exception::class)
-    private fun procesarString(mensaje: String, connection: Connection) { //Cosas de python
+    private fun procesarString(mensaje: String) { //Cosas de python
         val chunks = mensaje.split(" ".toRegex()).dropLastWhile { it.isEmpty() }
             .toTypedArray()
         grafo(chunks[0], chunks[1].toInt(), chunks[2])
@@ -224,7 +222,7 @@ class Nodo(// Obtiene nombre del nodo
             padre!!.mandarMensaje(
                 MensajeProtocolo.add(
                     iP,
-                    pUERTO,
+                    puerto,
                     nombre,
                     tokenSeguridad
                 )
@@ -248,8 +246,7 @@ class Nodo(// Obtiene nombre del nodo
                         mensaje as MensajeProtocolo,
                         connection
                     ) else if (mensaje is String) procesarString(
-                        mensaje as String,
-                        connection
+                        mensaje as String
                     )
                 }
             } catch (e: Exception) {
@@ -275,14 +272,15 @@ class Nodo(// Obtiene nombre del nodo
         }
     }
 
-    /*
+    /**
      * Este método establece una conexión socket a una dirección de un servidor Python y envía un mensaje en formato de cadena
      * que se puede decodificar fácilmente en Python usando UTF-8.
+     *
      * @param ip La dirección IP del servidor al que se desea conectar.
      * @param puerto El puerto del servidor al que se desea conectar.
      * @param mensaje La cadena de mensaje que se desea enviar.
      */
-    fun mandaMensajeString(ip: String?, puerto: Int, mensaje: String) {
+    private fun mandaMensajeString(ip: String?, puerto: Int, mensaje: String) {
         try {
             Socket(ip, puerto).use { socket ->
                 val out = socket.getOutputStream()
@@ -332,7 +330,7 @@ class Nodo(// Obtiene nombre del nodo
                 Variables: %s
                 """.trimIndent(),
             nombre, iP, externalIP,
-            pUERTO, numNodos, infoVecinos(), variables.toString()
+            puerto, numNodos, infoVecinos(), variables.toString()
         )
     }
 

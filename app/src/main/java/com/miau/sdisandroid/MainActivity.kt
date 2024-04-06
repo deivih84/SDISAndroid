@@ -1,22 +1,17 @@
 package com.miau.sdisandroid
 
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet.Layout
 import com.miau.sdisandroid.databinding.ActivityMainBinding
+import com.miau.sdisandroid.LanzadorEpico.lanzador
 
 class MainActivity : AppCompatActivity() {
 
@@ -74,5 +69,27 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    fun lanzarPulsado(view: View) {
+        var args = arrayOfNulls<String>(7) // CUIDADO nulls a la vista 😰
+        args[0] = findViewById<EditText>(R.id.editNomHijo).text.toString()
+        args[1] = findViewById<EditText>(R.id.editPortHijo).text.toString()
+        args[2] = findViewById<EditText>(R.id.editTokHijo).text.toString()
+        args[3] = findViewById<EditText>(R.id.editNomPadre).text.toString()
+        args[4] = findViewById<EditText>(R.id.editPortPadre).text.toString()
+        args[5] = findViewById<EditText>(R.id.editTokPadre).text.toString()
+        args[6] = findViewById<EditText>(R.id.cantidadNodos).text.toString()
+        val idRadioActivado = findViewById<RadioGroup>(R.id.radioGroup).checkedRadioButtonId
+//        println(idRadioActivado)
+        val servicio: Utiles.Servicio = when (idRadioActivado) {
+            R.id.radioNodoPadre -> Utiles.Servicio.NODOPADRE
+            R.id.radioNodoHijo -> Utiles.Servicio.NODOHIJO
+            R.id.radioDDos -> Utiles.Servicio.ATAQUEDDOS
+            else -> Utiles.Servicio.INDEFINIDO
+        }
+
+        lanzador(args, servicio)
+
     }
 }

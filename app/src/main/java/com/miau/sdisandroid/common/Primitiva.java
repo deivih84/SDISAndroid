@@ -1,4 +1,4 @@
-package moduloBasico.common;
+package com.miau.sdisandroid.common;
 
 public enum Primitiva {
     // Agrega un nodo hijo a un nodo padre.
