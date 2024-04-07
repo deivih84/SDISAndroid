@@ -10,6 +10,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.miau.sdisandroid.databinding.ActivityMainBinding
 import com.miau.sdisandroid.LanzadorEpico.lanzador
 
@@ -72,7 +73,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun lanzarPulsado(view: View) {
-        var args = arrayOfNulls<String>(7) // CUIDADO nulls a la vista 😰
+        findViewById<FloatingActionButton>(R.id.fabCrearNodo).isClickable = false
+        findViewById<FloatingActionButton>(R.id.fabCrearNodo).isFocusable = false
+
+        val args = arrayOfNulls<String>(7) // CUIDADO nulls a la vista 😰
         args[0] = findViewById<EditText>(R.id.editNomHijo).text.toString()
         args[1] = findViewById<EditText>(R.id.editPortHijo).text.toString()
         args[2] = findViewById<EditText>(R.id.editTokHijo).text.toString()
@@ -80,6 +84,12 @@ class MainActivity : AppCompatActivity() {
         args[4] = findViewById<EditText>(R.id.editPortPadre).text.toString()
         args[5] = findViewById<EditText>(R.id.editTokPadre).text.toString()
         args[6] = findViewById<EditText>(R.id.cantidadNodos).text.toString()
+
+        // TODO Añadir una buena validacion para cada caso de servicio
+        repeat(7) {
+            if (args[it].isNullOrBlank()) args[it] = " "
+        }
+
         val idRadioActivado = findViewById<RadioGroup>(R.id.radioGroup).checkedRadioButtonId
 //        println(idRadioActivado)
         val servicio: Utiles.Servicio = when (idRadioActivado) {
@@ -90,6 +100,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         lanzador(args, servicio)
-
+        findViewById<TextView>(R.id.editErrores).text = "Nodo Lanzado con éxito"
     }
 }

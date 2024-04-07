@@ -61,9 +61,9 @@ class Nodo(// Obtiene nombre del nodo
         mainServer.start() // Se lanza el hilo servidor y que haga sus locuras
     }
 
-    val iP: InetAddress
+    private val ip: InetAddress
         // Obtiene ip del nodo
-        get() = serverSocket.getInetAddress()
+        get() = serverSocket.inetAddress
     val externalIP: String?
         // Obtiene la ip publica
         get() {
@@ -221,7 +221,7 @@ class Nodo(// Obtiene nombre del nodo
             sirviente(padre!!)
             padre!!.mandarMensaje(
                 MensajeProtocolo.add(
-                    iP,
+                    ip,
                     puerto,
                     nombre,
                     tokenSeguridad
@@ -329,7 +329,7 @@ class Nodo(// Obtiene nombre del nodo
                 %s
                 Variables: %s
                 """.trimIndent(),
-            nombre, iP, externalIP,
+            nombre, ip, externalIP,
             puerto, numNodos, infoVecinos(), variables.toString()
         )
     }
