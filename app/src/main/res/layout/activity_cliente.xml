@@ -9,22 +9,36 @@
         android:id="@+id/LabelTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
         android:fontFamily="@font/lexend_medium"
         android:text="Bienvenide❤️"
         android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
 
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="317dp"
         android:layout_height="50dp"
         android:ems="10"
+        android:hint="Macarrones"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/LabelTitulo"
         app:layout_constraintStart_toStartOf="@+id/LabelTitulo"
         app:layout_constraintTop_toBottomOf="@+id/LabelTitulo" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:cornerRadius="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextText"
+        app:layout_constraintStart_toStartOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintVertical_bias="0.033" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
