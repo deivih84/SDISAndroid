@@ -6,34 +6,25 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/LabelTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Bienvenido/a/e/Q+"
-        android:textSize="35sp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/lexend_medium"
+        android:text="Bienvenide❤️"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextText"
-        android:layout_width="278dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="63dp"
+        android:layout_width="317dp"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintEnd_toEndOf="@+id/LabelTitulo"
+        app:layout_constraintStart_toStartOf="@+id/LabelTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/LabelTitulo" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
-        tools:layout_editor_absoluteY="256dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
