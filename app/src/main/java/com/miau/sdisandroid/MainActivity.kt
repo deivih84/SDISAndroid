@@ -22,39 +22,38 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_cliente)
 
 
         //TODO meter esto en funciones y cambiarlo de sitio
 
         // Crear los objetos layout porque se van a usar y queda mas limpio :)
-        val layoutNodoPadre = findViewById<ConstraintLayout>(R.id.layoutDatosHijo)
-        val layoutNodoHijo = findViewById<ConstraintLayout>(R.id.layoutDatosPadre)
-
-        findViewById<RadioButton>(R.id.radioNodoPadre).setOnClickListener {
-            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.GONE
-            findViewById<EditText>(R.id.cantidadNodos).visibility = View.GONE
-            layoutNodoPadre.visibility = View.VISIBLE
-            layoutNodoHijo.visibility = View.GONE
-
-        }
-        findViewById<RadioButton>(R.id.radioNodoHijo).setOnClickListener {
-            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.GONE
-            findViewById<EditText>(R.id.cantidadNodos).visibility = View.GONE
-            layoutNodoPadre.visibility = View.VISIBLE
-            layoutNodoHijo.visibility = View.VISIBLE
-        }
-        findViewById<RadioButton>(R.id.radioDDos).setOnClickListener {
-            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.VISIBLE
-            findViewById<EditText>(R.id.cantidadNodos).visibility = View.VISIBLE
-            layoutNodoPadre.visibility = View.GONE
-            layoutNodoHijo.visibility = View.VISIBLE
-//            val padre = findViewById<ConstraintLayout>(R.id.layoutDatosPadre)
-//            val layoutParams = padre.layoutParams as ConstraintLayout.LayoutParams
-//            layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID
-//            padre.layoutParams = layoutParams
-        }
+//        val layoutNodoPadre = findViewById<ConstraintLayout>(R.id.layoutDatosHijo)
+//        val layoutNodoHijo = findViewById<ConstraintLayout>(R.id.layoutDatosPadre)
+//
+//        findViewById<RadioButton>(R.id.radioNodoPadre).setOnClickListener {
+//            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.GONE
+//            findViewById<EditText>(R.id.cantidadNodos).visibility = View.GONE
+//            layoutNodoPadre.visibility = View.VISIBLE
+//            layoutNodoHijo.visibility = View.GONE
+//
+//        }
+//        findViewById<RadioButton>(R.id.radioNodoHijo).setOnClickListener {
+//            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.GONE
+//            findViewById<EditText>(R.id.cantidadNodos).visibility = View.GONE
+//            layoutNodoPadre.visibility = View.VISIBLE
+//            layoutNodoHijo.visibility = View.VISIBLE
+//        }
+//        findViewById<RadioButton>(R.id.radioDDos).setOnClickListener {
+//            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.VISIBLE
+//            findViewById<EditText>(R.id.cantidadNodos).visibility = View.VISIBLE
+//            layoutNodoPadre.visibility = View.GONE
+//            layoutNodoHijo.visibility = View.VISIBLE
+//        }
     }
+
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -102,4 +101,7 @@ class MainActivity : AppCompatActivity() {
         lanzador(args, servicio)
         findViewById<TextView>(R.id.editErrores).text = "Nodo Lanzado con éxito"
     }
+
+
+
 }
