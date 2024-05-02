@@ -6,13 +6,17 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.miau.sdisandroid.LanzadorEpico.lanzador
 import com.miau.sdisandroid.databinding.ActivityMainBinding
+import java.net.HttpURLConnection
+import java.net.URL
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -53,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+    // Primera Vista
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -101,6 +105,17 @@ class MainActivity : AppCompatActivity() {
         lanzador(args, servicio)
         findViewById<TextView>(R.id.editErrores).text = "Nodo Lanzado con éxito"
     }
+
+    // FUNCIONES VISTA 2
+
+    fun procesarSubirPulsado(view: View) {
+        mandarDatos(findViewById<EditText>(R.id.editTextConsulta).text.toString(), "hola")
+    }
+
+    fun mandarDatos(userText: String, data: String) {
+
+    }
+
 
 
 

@@ -12,7 +12,8 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "0.8"
+        val versionActual = "0.8"
+        versionName = versionActual
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
