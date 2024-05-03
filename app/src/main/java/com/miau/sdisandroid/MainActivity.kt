@@ -1,26 +1,32 @@
 package com.miau.sdisandroid
 
+import android.net.http.HttpResponseCache.install
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
-import android.widget.RadioGroup
-import android.widget.TextView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.miau.sdisandroid.LanzadorEpico.lanzador
+import cn.dreampie.websocket.WebsocketClient
+import com.firework.network.websocket.WebSocketClient
+import java.time.*
+import java.util.*
+import kotlin.collections.LinkedHashSet
 import com.miau.sdisandroid.databinding.ActivityMainBinding
-import java.net.HttpURLConnection
-import java.net.URL
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var ip: String
+    private var puerto: Int = 0
+
+
+
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,34 +35,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cliente)
 
 
-        //TODO meter esto en funciones y cambiarlo de sitio
 
-        // Crear los objetos layout porque se van a usar y queda mas limpio :)
-//        val layoutNodoPadre = findViewById<ConstraintLayout>(R.id.layoutDatosHijo)
-//        val layoutNodoHijo = findViewById<ConstraintLayout>(R.id.layoutDatosPadre)
-//
-//        findViewById<RadioButton>(R.id.radioNodoPadre).setOnClickListener {
-//            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.GONE
-//            findViewById<EditText>(R.id.cantidadNodos).visibility = View.GONE
-//            layoutNodoPadre.visibility = View.VISIBLE
-//            layoutNodoHijo.visibility = View.GONE
-//
-//        }
-//        findViewById<RadioButton>(R.id.radioNodoHijo).setOnClickListener {
-//            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.GONE
-//            findViewById<EditText>(R.id.cantidadNodos).visibility = View.GONE
-//            layoutNodoPadre.visibility = View.VISIBLE
-//            layoutNodoHijo.visibility = View.VISIBLE
-//        }
-//        findViewById<RadioButton>(R.id.radioDDos).setOnClickListener {
-//            findViewById<TextView>(R.id.textCantidadNodos).visibility = View.VISIBLE
-//            findViewById<EditText>(R.id.cantidadNodos).visibility = View.VISIBLE
-//            layoutNodoPadre.visibility = View.GONE
-//            layoutNodoHijo.visibility = View.VISIBLE
-//        }
+
     }
-
-
     // Primera Vista
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -75,37 +56,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun lanzarPulsado(view: View) {
-        findViewById<FloatingActionButton>(R.id.fabCrearNodo).isClickable = false
-        findViewById<FloatingActionButton>(R.id.fabCrearNodo).isFocusable = false
-
-        val args = arrayOfNulls<String>(7) // CUIDADO nulls a la vista 😰
-        args[0] = findViewById<EditText>(R.id.editNomHijo).text.toString()
-        args[1] = findViewById<EditText>(R.id.editPortHijo).text.toString()
-        args[2] = findViewById<EditText>(R.id.editTokHijo).text.toString()
-        args[3] = findViewById<EditText>(R.id.editNomPadre).text.toString()
-        args[4] = findViewById<EditText>(R.id.editPortPadre).text.toString()
-        args[5] = findViewById<EditText>(R.id.editTokPadre).text.toString()
-        args[6] = findViewById<EditText>(R.id.cantidadNodos).text.toString()
-
-        // TODO Añadir una buena validacion para cada caso de servicio
-        repeat(7) {
-            if (args[it].isNullOrBlank()) args[it] = " "
-        }
-
-        val idRadioActivado = findViewById<RadioGroup>(R.id.radioGroup).checkedRadioButtonId
-//        println(idRadioActivado)
-        val servicio: Utiles.Servicio = when (idRadioActivado) {
-            R.id.radioNodoPadre -> Utiles.Servicio.NODOPADRE
-            R.id.radioNodoHijo -> Utiles.Servicio.NODOHIJO
-            R.id.radioDDos -> Utiles.Servicio.ATAQUEDDOS
-            else -> Utiles.Servicio.INDEFINIDO
-        }
-
-        lanzador(args, servicio)
-        findViewById<TextView>(R.id.editErrores).text = "Nodo Lanzado con éxito"
-    }
-
     // FUNCIONES VISTA 2
 
     fun procesarSubirPulsado(view: View) {
@@ -117,6 +67,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+    fun configureSockets() {
+        val cliente: dev.gustavoavila.websocketclient.WebSocketClient
+
+    }
 
 
 }
