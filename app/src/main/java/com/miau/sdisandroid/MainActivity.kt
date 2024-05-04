@@ -1,18 +1,14 @@
 package com.miau.sdisandroid
 
-import android.net.http.HttpResponseCache.install
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
-import cn.dreampie.websocket.WebsocketClient
-import com.firework.network.websocket.WebSocketClient
+import androidx.appcompat.app.AppCompatActivity
+import com.miau.sdisandroid.databinding.ActivityMainBinding
 import java.time.*
 import java.util.*
-import kotlin.collections.LinkedHashSet
-import com.miau.sdisandroid.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -70,6 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     fun configureSockets() {
         val cliente: dev.gustavoavila.websocketclient.WebSocketClient
+        val sever: WebSocke
 
     }
 

@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.network.websocket)
     implementation("dev.gustavoavila:java-android-websocket-client:2.0.2")
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
