@@ -1,14 +1,18 @@
 package com.miau.sdisandroid
 
+import android.annotation.SuppressLint
+import android.os.AsyncTask
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.miau.sdisandroid.databinding.ActivityMainBinding
-import java.time.*
-import java.util.*
+import java.io.InputStream
+import java.io.OutputStream
+import java.net.Socket
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,12 +20,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var ip: String
     private var puerto: Int = 0
-
-
-
-
-
-
+    private lateinit var socket: Socket
+    private lateinit var input: InputStream
+    private lateinit var output: OutputStream
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,11 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_cliente)
-
-
+        InitTask().execute()
 
 
     }
+
+
     // Primera Vista
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -52,21 +54,43 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     // FUNCIONES VISTA 2
 
-    fun procesarSubirPulsado(view: View) {
-        mandarDatos(findViewById<EditText>(R.id.editTextConsulta).text.toString(), "hola")
+    private fun inicializar(serverIp: String, puerto: Int) {
+        findViewById<TextView>(R.id.labelErrores).text = "Creando el socket :)"
+        socket = Socket(serverIp, puerto)
+        output = socket.getOutputStream()
+        try {
+            input = socket.getInputStream()
+            findViewById<TextView>(R.id.labelErrores).text = "Socket creado con exito :)"
+
+        } catch (e: Exception) {
+            findViewById<TextView>(R.id.labelErrores).text = "Algo fue mal :("
+        }
+
     }
 
-    fun mandarDatos(userText: String, data: String) {
-
+    @SuppressLint("StaticFieldLeak")
+    private inner class InitTask : AsyncTask<Void, Void, Void>() {
+        override fun doInBackground(vararg params: Void?): Void? {
+            inicializar("192.168.56.1", 12345)
+            return null
+        }
     }
 
+    fun procesarEnviarPulsado(view: View) {
+        print("Envía un mensaje al servidor: ")
+        val message = findViewById<TextView>(R.id.editTextConsulta).text.toString()
+        // Enviar el mensaje
+        output.write(message.toByteArray())
+        output.flush()
 
-
-    fun configureSockets() {
-        val cliente: dev.gustavoavila.websocketclient.WebSocketClient
-        val sever: WebSocke
+        // Leer nuevo mensaje
+        val buffer = ByteArray(1024)
+        val bytesRead = input.read(buffer)
+        val response = String(buffer, 0, bytesRead)
+        println("Respuesta del servidor: $response")
 
     }
 

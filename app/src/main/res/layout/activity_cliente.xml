@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/orange"
-        android:onClick="procesarSubirPulsado"
+        android:onClick="procesarEnviarPulsado"
         android:text="@string/enviar"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -44,5 +44,31 @@
         app:layout_constraintStart_toStartOf="@+id/editTextConsulta"
         app:layout_constraintTop_toBottomOf="@+id/editTextConsulta"
         app:layout_constraintVertical_bias="0.033" />
+
+    <TextView
+        android:id="@+id/labelMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensaje"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEnviar"
+        app:layout_constraintVertical_bias="0.205" />
+
+    <TextView
+        android:id="@+id/labelErrores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":)"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelMensaje"
+        app:layout_constraintVertical_bias="0.952" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
