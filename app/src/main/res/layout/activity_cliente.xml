@@ -71,4 +71,29 @@
         app:layout_constraintTop_toBottomOf="@+id/labelMensaje"
         app:layout_constraintVertical_bias="0.952" />
 
+    <EditText
+        android:id="@+id/editTextConexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ip servidor"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConexion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelMensaje"
+        app:layout_constraintVertical_bias="0.94" />
+
+    <Button
+        android:id="@+id/buttonConexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:onClick="buttonConexionPulsado"
+        android:text="Conectar"
+        app:layout_constraintBottom_toTopOf="@+id/labelErrores"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

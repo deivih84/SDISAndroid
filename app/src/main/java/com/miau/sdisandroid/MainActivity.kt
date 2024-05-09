@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.miau.sdisandroid.databinding.ActivityMainBinding
@@ -30,9 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_cliente)
-        InitTask().execute()
-
-
     }
 
 
@@ -74,7 +70,8 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("StaticFieldLeak")
     private inner class InitTask : AsyncTask<Void, Void, Void>() {
         override fun doInBackground(vararg params: Void?): Void? {
-            inicializar("192.168.56.1", 12345)
+            // Pasarle a inicializar la ip especificada y el puerto en el que se va a conectar
+            inicializar(findViewById<TextView>(R.id.editTextConexion).text.toString(), 12345)
             return null
         }
     }
@@ -92,6 +89,11 @@ class MainActivity : AppCompatActivity() {
         val response = String(buffer, 0, bytesRead)
         println("Respuesta del servidor: $response")
 
+    }
+
+
+    fun buttonConexionPulsado(view: View) {
+        InitTask().execute()
     }
 
 
