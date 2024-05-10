@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             input = socket.getInputStream()
 
         } catch (e: Exception) {
-            println("No se pudo crear el socket, output o input")
+            println("ERRORES: $e")
         }
 
     }
@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         override fun doInBackground(vararg params: Void?): Void? {
             // Pasarle a inicializar la ip especificada y el puerto en el que se va a conectar
             inicializar(findViewById<TextView>(R.id.editTextConexion).text.toString(), 12345)
+            println("Zocalo creado con exito")
             return null
         }
     }
@@ -93,6 +94,7 @@ class MainActivity : AppCompatActivity() {
     fun procesarConexionPulsado(view: View) {
         findViewById<TextView>(R.id.labelErrores).text = "Creando el socket :)"
         InitTask().execute()
+        println("Socket creado con exito :)")
         findViewById<TextView>(R.id.labelErrores).text = "Socket creado con exito :)"
 
     }
