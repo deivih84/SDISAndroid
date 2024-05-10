@@ -90,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
-        android:onClick="buttonConexionPulsado"
+        android:onClick="procesarConexionPulsado"
         android:text="Conectar"
         app:layout_constraintBottom_toTopOf="@+id/labelErrores"
         app:layout_constraintEnd_toEndOf="parent"

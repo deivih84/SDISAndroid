@@ -54,15 +54,13 @@ class MainActivity : AppCompatActivity() {
     // FUNCIONES VISTA 2
 
     private fun inicializar(serverIp: String, puerto: Int) {
-        findViewById<TextView>(R.id.labelErrores).text = "Creando el socket :)"
-        socket = Socket(serverIp, puerto)
-        output = socket.getOutputStream()
         try {
+            socket = Socket(serverIp, puerto)
+            output = socket.getOutputStream()
             input = socket.getInputStream()
-            findViewById<TextView>(R.id.labelErrores).text = "Socket creado con exito :)"
 
         } catch (e: Exception) {
-            findViewById<TextView>(R.id.labelErrores).text = "Algo fue mal :("
+            println("No se pudo crear el socket, output o input")
         }
 
     }
@@ -92,8 +90,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun buttonConexionPulsado(view: View) {
+    fun procesarConexionPulsado(view: View) {
+        findViewById<TextView>(R.id.labelErrores).text = "Creando el socket :)"
         InitTask().execute()
+        findViewById<TextView>(R.id.labelErrores).text = "Socket creado con exito :)"
+
     }
 
 
