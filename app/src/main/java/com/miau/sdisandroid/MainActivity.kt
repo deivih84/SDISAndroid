@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.miau.sdisandroid.databinding.ActivityMainBinding
 import java.io.InputStream
 import java.io.OutputStream
@@ -77,16 +78,23 @@ class MainActivity : AppCompatActivity() {
 
     fun procesarEnviarPulsado(view: View) {
         print("Envía un mensaje al servidor: ")
-        val message = findViewById<TextView>(R.id.editTextConsulta).text.toString()
-        // Enviar el mensaje
-        output.write(message.toByteArray())
-        output.flush()
 
-        // Leer nuevo mensaje
-        val buffer = ByteArray(1024)
-        val bytesRead = input.read(buffer)
-        val response = String(buffer, 0, bytesRead)
-        println("Respuesta del servidor: $response")
+        findViewById<RecyclerView>(R.id.recyclerChat).add
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerChat)
+        val adapter = recyclerView.adapter as? ChatAdapter // Suponiendo que tu adaptador se llama ChatAdapter
+        adapter?.addMessage(newMessage) // Método personalizado en tu adaptador para agregar un nuevo mensaje
+
+
+//        val message = findViewById<TextView>(R.id.editTextConsulta).text.toString()
+//        // Enviar el mensaje
+//        output.write(message.toByteArray())
+//        output.flush()
+//
+//        // Leer nuevo mensaje
+//        val buffer = ByteArray(1024)
+//        val bytesRead = input.read(buffer)
+//        val response = String(buffer, 0, bytesRead)
+//        println("Respuesta del servidor: $response")
 
     }
 
@@ -101,8 +109,40 @@ class MainActivity : AppCompatActivity() {
             setContentView(R.layout.activity_cliente)
             println("Socket creado con exito :)")
         }
-
     }
 
 
+
+
+}
+
+
+class ChatAdapter(private val messages: List<String>) : RecyclerView.Adapter<ChatAdapter.MessageViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.message_item, parent, false)
+        return MessageViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
+        val message = messages[position]
+        holder.messageContent.text = message.content
+        holder.messageTime.text = message.time
+        // Aquí puedes cargar la imagen de perfil utilizando alguna biblioteca de carga de imágenes como Glide o Picasso
+    }
+
+    override fun getItemCount(): Int {
+        return messages.size
+    }
+
+    fun addMessage(message: Message) {
+        messages.add(message)
+        notifyItemInserted(messages.size - 1)
+    }
+
+    class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val profileImage: ImageView = itemView.findViewById(R.id.profileImage)
+        val messageContent: TextView = itemView.findViewById(R.id.messageContent)
+        val messageTime: TextView = itemView.findViewById(R.id.messageTime)
+    }
 }

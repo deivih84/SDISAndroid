@@ -5,8 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:scaleX="1.3"
+        android:scaleY="1.3"
+        android:src="@drawable/baseline_menu_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:background="#00FFFFFF"
+        android:scaleX="1.3"
+        android:scaleY="1.3"
+        android:src="@drawable/baseline_open_in_new_24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toTopOf="@+id/imageButton3" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:background="#00FFFFFF"
+        android:scaleX="1.3"
+        android:scaleY="1.3"
+        android:src="@drawable/baseline_more_vert_24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageButton2"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
-        android:id="@+id/LabelTitulo"
+        android:id="@+id/labelTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lexend_medium"
@@ -16,45 +60,57 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintVertical_bias="0.161" />
 
     <EditText
         android:id="@+id/editTextConsulta"
-        android:layout_width="294dp"
+        android:layout_width="317dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Macarrones"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/LabelTitulo"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/LabelTitulo"
-        tools:layout_editor_absoluteY="660dp" />
-
-    <Button
-        android:id="@+id/buttonEnviar"
-        android:layout_width="61dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="4dp"
-        android:backgroundTint="@color/orange"
-        android:onClick="procesarEnviarPulsado"
-        android:text="@string/enviar"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:cornerRadius="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextConsulta"
-        app:layout_constraintStart_toEndOf="@+id/editTextConsulta"
-        app:layout_constraintTop_toTopOf="@+id/editTextConsulta" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/labelMensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
         android:text="Mensaje"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.102" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerChat"
+        android:layout_width="370dp"
+        android:layout_height="459dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextConsulta"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/buttonEnviar"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@mipmap/ic_launcher_foreground"
+        android:onClick="procesarEnviarPulsado"
+        android:scaleType="center"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextConsulta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintStart_toEndOf="@+id/editTextConsulta"
+        app:layout_constraintTop_toTopOf="@+id/editTextConsulta"
+        app:srcCompat="@drawable/baseline_arrow_upward_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
