@@ -9,22 +9,24 @@
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="#00FFFFFF"
         android:scaleX="1.3"
         android:scaleY="1.3"
         android:src="@drawable/baseline_menu_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.021" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="16dp"
         android:background="#00FFFFFF"
         android:scaleX="1.3"
         android:scaleY="1.3"
@@ -39,7 +41,7 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="16dp"
         android:background="#00FFFFFF"
         android:scaleX="1.3"
         android:scaleY="1.3"
@@ -53,14 +55,17 @@
         android:id="@+id/labelTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/lexend_medium"
-        android:text="Bienvenide❤️"
-        android:textSize="50sp"
+        android:text="ChatGPT Pasta 🍝"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextConsulta"
@@ -79,7 +84,7 @@
         android:id="@+id/labelMensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mensaje"
+        android:text="          "
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,8 +95,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerChat"
-        android:layout_width="370dp"
-        android:layout_height="459dp"
+        android:layout_width="371dp"
+        android:layout_height="525dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextConsulta"
         app:layout_constraintEnd_toEndOf="parent"
