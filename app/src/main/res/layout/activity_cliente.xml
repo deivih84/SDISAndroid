@@ -20,80 +20,41 @@
 
     <EditText
         android:id="@+id/editTextConsulta"
-        android:layout_width="317dp"
-        android:layout_height="50dp"
+        android:layout_width="294dp"
+        android:layout_height="55dp"
         android:ems="10"
         android:hint="Macarrones"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/LabelTitulo"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/LabelTitulo"
-        app:layout_constraintTop_toBottomOf="@+id/LabelTitulo" />
+        tools:layout_editor_absoluteY="660dp" />
 
     <Button
         android:id="@+id/buttonEnviar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="61dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="4dp"
         android:backgroundTint="@color/orange"
         android:onClick="procesarEnviarPulsado"
         android:text="@string/enviar"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:cornerRadius="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextConsulta"
-        app:layout_constraintStart_toStartOf="@+id/editTextConsulta"
-        app:layout_constraintTop_toBottomOf="@+id/editTextConsulta"
-        app:layout_constraintVertical_bias="0.033" />
+        app:layout_constraintBottom_toBottomOf="@+id/editTextConsulta"
+        app:layout_constraintStart_toEndOf="@+id/editTextConsulta"
+        app:layout_constraintTop_toTopOf="@+id/editTextConsulta" />
 
     <TextView
         android:id="@+id/labelMensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="240dp"
         android:text="Mensaje"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEnviar"
-        app:layout_constraintVertical_bias="0.205" />
-
-    <TextView
-        android:id="@+id/labelErrores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=":)"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelMensaje"
-        app:layout_constraintVertical_bias="0.952" />
-
-    <EditText
-        android:id="@+id/editTextConexion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Ip servidor"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/buttonConexion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelMensaje"
-        app:layout_constraintVertical_bias="0.94" />
-
-    <Button
-        android:id="@+id/buttonConexion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:onClick="procesarConexionPulsado"
-        android:text="Conectar"
-        app:layout_constraintBottom_toTopOf="@+id/labelErrores"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.919"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

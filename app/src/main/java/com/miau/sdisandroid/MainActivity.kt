@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var ip: String
     private var puerto: Int = 0
-    private lateinit var socket: Socket
+    private var socket: Socket? = null
     private lateinit var input: InputStream
     private lateinit var output: OutputStream
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_cliente)
+        setContentView(R.layout.activity_conexion)
     }
 
 
@@ -56,8 +56,8 @@ class MainActivity : AppCompatActivity() {
     private fun inicializar(serverIp: String, puerto: Int) {
         try {
             socket = Socket(serverIp, puerto)
-            output = socket.getOutputStream()
-            input = socket.getInputStream()
+            output = socket!!.getOutputStream()
+            input = socket!!.getInputStream()
 
         } catch (e: Exception) {
             println("ERRORES: $e")
@@ -94,8 +94,13 @@ class MainActivity : AppCompatActivity() {
     fun procesarConexionPulsado(view: View) {
         findViewById<TextView>(R.id.labelErrores).text = "Creando el socket :)"
         InitTask().execute()
-        println("Socket creado con exito :)")
-        findViewById<TextView>(R.id.labelErrores).text = "Socket creado con exito :)"
+
+        if (socket == null)
+            findViewById<TextView>(R.id.labelErrores)
+        else {
+            setContentView(R.layout.activity_cliente)
+            println("Socket creado con exito :)")
+        }
 
     }
 
