@@ -117,32 +117,3 @@ class MainActivity : AppCompatActivity() {
 }
 
 
-class ChatAdapter(private val messages: List<String>) : RecyclerView.Adapter<ChatAdapter.MessageViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.message_item, parent, false)
-        return MessageViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        val message = messages[position]
-        holder.messageContent.text = message.content
-        holder.messageTime.text = message.time
-        // Aquí puedes cargar la imagen de perfil utilizando alguna biblioteca de carga de imágenes como Glide o Picasso
-    }
-
-    override fun getItemCount(): Int {
-        return messages.size
-    }
-
-    fun addMessage(message: Message) {
-        messages.add(message)
-        notifyItemInserted(messages.size - 1)
-    }
-
-    class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val profileImage: ImageView = itemView.findViewById(R.id.profileImage)
-        val messageContent: TextView = itemView.findViewById(R.id.messageContent)
-        val messageTime: TextView = itemView.findViewById(R.id.messageTime)
-    }
-}
