@@ -3,7 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#303030">
+
+    <ImageView
+        android:id="@+id/coso"
+        android:layout_width="390dp"
+        android:layout_height="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9845"
+        app:srcCompat="@drawable/forma_fondo" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -55,15 +67,15 @@
         android:id="@+id/labelTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/lexend_medium"
         android:text="ChatGPT Pasta 🍝"
+        android:textColor="#B0B0B0"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintHorizontal_bias="0.271"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -71,39 +83,21 @@
         android:id="@+id/editTextConsulta"
         android:layout_width="317dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Macarrones"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/labelMensaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="          "
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+        android:textColor="#DADADA"
+        app:layout_constraintBottom_toBottomOf="@+id/coso"
+        app:layout_constraintEnd_toEndOf="@+id/coso"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="@+id/coso"
+        app:layout_constraintTop_toTopOf="@+id/coso" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerChat"
-        android:layout_width="371dp"
-        android:layout_height="525dp"
+        android:layout_width="369dp"
+        android:layout_height="579dp"
         android:layout_marginBottom="16dp"
-        android:paddingStart="8dp"
-        android:paddingLeft="8dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="8dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextConsulta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -113,7 +107,7 @@
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@mipmap/ic_launcher_foreground"
+        android:background="@drawable/circulo_gris"
         android:onClick="procesarEnviarPulsado"
         android:scaleType="center"
         android:textAlignment="center"

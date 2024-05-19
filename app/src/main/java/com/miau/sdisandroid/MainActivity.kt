@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miau.sdisandroid.databinding.ActivityMainBinding
 import java.io.InputStream
@@ -24,16 +25,32 @@ class MainActivity : AppCompatActivity() {
     private lateinit var input: InputStream
     private lateinit var output: OutputStream
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: MensajeAdapter
+    private val mensajes = mutableListOf<Mensaje>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_conexion)
+        setContentView(R.layout.activity_cliente)
+
+
+
+        recyclerView = findViewById(R.id.recyclerChat)
+        adapter = MensajeAdapter(mensajes)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
     }
 
 
+
+
+
+
     // Primera Vista
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -51,8 +68,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     // FUNCIONES VISTA 2
+
 
     private fun inicializar(serverIp: String, puerto: Int) {
         try {
@@ -79,11 +96,15 @@ class MainActivity : AppCompatActivity() {
     fun procesarEnviarPulsado(view: View) {
         print("Envía un mensaje al servidor: ")
 
-        findViewById<RecyclerView>(R.id.recyclerChat).add
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerChat)
-        val adapter = recyclerView.adapter as? ChatAdapter // Suponiendo que tu adaptador se llama ChatAdapter
-        adapter?.addMessage(newMessage) // Método personalizado en tu adaptador para agregar un nuevo mensaje
 
+        // Accede al RecyclerView inflado
+        var editTextConsulta = findViewById<TextView>(R.id.editTextConsulta).text
+        val texto = editTextConsulta.toString()
+        editTextConsulta = ""
+
+
+        // Ejemplo de agregar un nuevo mensaje
+        addNewMensaje("David", texto)
 
 //        val message = findViewById<TextView>(R.id.editTextConsulta).text.toString()
 //        // Enviar el mensaje
@@ -96,6 +117,13 @@ class MainActivity : AppCompatActivity() {
 //        val response = String(buffer, 0, bytesRead)
 //        println("Respuesta del servidor: $response")
 
+    }
+
+    // Función para agregar un nuevo mensaje y actualizar el RecyclerView
+    private fun addNewMensaje(autor: String, texto: String) {
+        val nuevoMensaje = Mensaje(autor, texto)
+        adapter.addMensaje(nuevoMensaje)
+        recyclerView.scrollToPosition(mensajes.size - 1)
     }
 
 
