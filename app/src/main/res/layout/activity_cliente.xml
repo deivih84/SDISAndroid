@@ -118,4 +118,45 @@
         app:layout_constraintTop_toTopOf="@+id/editTextConsulta"
         app:srcCompat="@drawable/baseline_arrow_upward_24" />
 
+    <EditText
+        android:id="@+id/editTextConexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Ip servidor"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConexion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.94" />
+
+    <Button
+        android:id="@+id/buttonConexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="164dp"
+        android:onClick="procesarConexionPulsado"
+        android:text="Conectar"
+        app:layout_constraintBottom_toTopOf="@+id/labelErrores"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/labelErrores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="252dp"
+        android:text=":)"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelMensaje"
+        app:layout_constraintVertical_bias="0.952" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

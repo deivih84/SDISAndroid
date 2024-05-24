@@ -6,11 +6,18 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miau.sdisandroid.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.io.InputStream
 import java.io.OutputStream
 import java.net.Socket
@@ -20,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var ip: String
-    private var puerto: Int = 0
+    private var puerto: Int = 12345
     private var socket: Socket? = null
     private lateinit var input: InputStream
     private lateinit var output: OutputStream
@@ -36,17 +43,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_cliente)
 
-
-
         recyclerView = findViewById(R.id.recyclerChat)
         adapter = MensajeAdapter(mensajes)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
-
-
-
-
 
 
     // Primera Vista
@@ -87,13 +88,17 @@ class MainActivity : AppCompatActivity() {
     private inner class InitTask : AsyncTask<Void, Void, Void>() {
         override fun doInBackground(vararg params: Void?): Void? {
             // Pasarle a inicializar la ip especificada y el puerto en el que se va a conectar
-            inicializar(findViewById<TextView>(R.id.editTextConexion).text.toString(), 12345)
+            inicializar(findViewById<TextView>(R.id.editTextConexion).text.toString(), puerto)
             println("Zocalo creado con exito")
+
+            // Cositas del reciclerview
+
             return null
         }
     }
 
     fun procesarEnviarPulsado(view: View) {
+        findViewById<ImageButton>(R.id.buttonEnviar).isEnabled = false
         print("Envía un mensaje al servidor: ")
 
 
@@ -103,21 +108,40 @@ class MainActivity : AppCompatActivity() {
         editTextConsulta = ""
 
 
-        // Ejemplo de agregar un nuevo mensaje
+        // Agregar un nuevo mensaje
         addNewMensaje("David", texto)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            enviarMensaje(texto)
+        }
+
 
 //        val message = findViewById<TextView>(R.id.editTextConsulta).text.toString()
 //        // Enviar el mensaje
 //        output.write(message.toByteArray())
 //        output.flush()
-//
-//        // Leer nuevo mensaje
-//        val buffer = ByteArray(1024)
-//        val bytesRead = input.read(buffer)
-//        val response = String(buffer, 0, bytesRead)
-//        println("Respuesta del servidor: $response")
 
+        var respuesta:String = ""
+        // Leer nuevo mensaje respuesta que mande el servidor
+        GlobalScope.launch(Dispatchers.IO) {
+            respuesta = recibirMensaje()
+        }
+        println("Respuesta del servidor: $respuesta")
+        addNewMensaje("Gepeto", respuesta)
+        findViewById<ImageButton>(R.id.buttonEnviar).isEnabled = true
     }
+
+    fun recibirMensaje():String {
+        val buffer = ByteArray(1024)
+        val bytesRead = input.read(buffer) /////////////////////////////////////////////////////////////////
+        return String(buffer, 0, bytesRead)
+    }
+    fun enviarMensaje(texto: String) {
+        output.write(texto.toByteArray())
+        output.flush()
+    }
+
+
 
     // Función para agregar un nuevo mensaje y actualizar el RecyclerView
     private fun addNewMensaje(autor: String, texto: String) {
@@ -131,10 +155,16 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.labelErrores).text = "Creando el socket :)"
         InitTask().execute()
 
-        if (socket == null)
+        if (socket == null){
             findViewById<TextView>(R.id.labelErrores)
+            println("Fallo al crear el socket")
+        }
         else {
-            setContentView(R.layout.activity_cliente)
+            findViewById<Button>(R.id.buttonConexion).isVisible = false
+            findViewById<EditText>(R.id.editTextConexion).isVisible = false
+            findViewById<TextView>(R.id.labelErrores).isVisible = false
+
+
             println("Socket creado con exito :)")
         }
     }
