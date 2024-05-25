@@ -8,13 +8,13 @@
 
     <ImageView
         android:id="@+id/coso"
-        android:layout_width="390dp"
+        android:layout_width="370dp"
         android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9845"
+        app:layout_constraintVertical_bias="0.99"
         app:srcCompat="@drawable/forma_fondo" />
 
     <ImageButton
@@ -81,7 +81,7 @@
 
     <EditText
         android:id="@+id/editTextConsulta"
-        android:layout_width="317dp"
+        android:layout_width="292dp"
         android:layout_height="55dp"
         android:ems="10"
         android:hint="Macarrones"
@@ -89,14 +89,15 @@
         android:textColor="#DADADA"
         app:layout_constraintBottom_toBottomOf="@+id/coso"
         app:layout_constraintEnd_toEndOf="@+id/coso"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.20"
         app:layout_constraintStart_toStartOf="@+id/coso"
-        app:layout_constraintTop_toTopOf="@+id/coso" />
+        app:layout_constraintTop_toTopOf="@+id/coso"
+        app:layout_constraintVertical_bias="0.4" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerChat"
-        android:layout_width="369dp"
-        android:layout_height="579dp"
+        android:layout_width="368dp"
+        android:layout_height="639dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextConsulta"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +109,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/circulo_gris"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:focusable="true"
         android:onClick="procesarEnviarPulsado"
+        android:saveEnabled="false"
         android:scaleType="center"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/editTextConsulta"
@@ -130,7 +135,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.94" />
 
     <Button

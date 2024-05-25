@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var ip: String
     private var puerto: Int = 12345
-    private var socket: Socket? = null
+    private lateinit var socket: Socket
     private lateinit var input: InputStream
     private lateinit var output: OutputStream
 
@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         adapter = MensajeAdapter(mensajes)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+        findViewById<ImageButton>(R.id.buttonEnviar).isEnabled = false
     }
 
 
@@ -75,8 +76,9 @@ class MainActivity : AppCompatActivity() {
     private fun inicializar(serverIp: String, puerto: Int) {
         try {
             socket = Socket(serverIp, puerto)
-            output = socket!!.getOutputStream()
-            input = socket!!.getInputStream()
+            output = socket.getOutputStream()
+            input = socket.getInputStream()
+            println(socket)
 
         } catch (e: Exception) {
             println("ERRORES: $e")
@@ -105,8 +107,7 @@ class MainActivity : AppCompatActivity() {
         // Accede al RecyclerView inflado
         var editTextConsulta = findViewById<TextView>(R.id.editTextConsulta).text
         val texto = editTextConsulta.toString()
-        editTextConsulta = ""
-
+        findViewById<TextView>(R.id.editTextConsulta).text = ""
 
         // Agregar un nuevo mensaje
         addNewMensaje("David", texto)
@@ -154,18 +155,17 @@ class MainActivity : AppCompatActivity() {
     fun procesarConexionPulsado(view: View) {
         findViewById<TextView>(R.id.labelErrores).text = "Creando el socket :)"
         InitTask().execute()
+        Thread.sleep(1000)
 
         if (socket == null){
             findViewById<TextView>(R.id.labelErrores)
             println("Fallo al crear el socket")
         }
         else {
-            findViewById<Button>(R.id.buttonConexion).isVisible = false
-            findViewById<EditText>(R.id.editTextConexion).isVisible = false
-            findViewById<TextView>(R.id.labelErrores).isVisible = false
-
-
-            println("Socket creado con exito :)")
+            findViewById<Button>(R.id.buttonConexion).visibility = View.GONE
+            findViewById<EditText>(R.id.editTextConexion).visibility = View.GONE
+            findViewById<TextView>(R.id.labelErrores).visibility = View.GONE
+            findViewById<ImageButton>(R.id.buttonEnviar).isEnabled = true
         }
     }
 
