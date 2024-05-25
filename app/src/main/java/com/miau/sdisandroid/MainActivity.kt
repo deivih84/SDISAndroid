@@ -15,9 +15,12 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miau.sdisandroid.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import java.io.InputStream
 import java.io.OutputStream
 import java.net.Socket
@@ -112,36 +115,42 @@ class MainActivity : AppCompatActivity() {
         // Agregar un nuevo mensaje
         addNewMensaje("David", texto)
 
+
         GlobalScope.launch(Dispatchers.IO) {
             enviarMensaje(texto)
         }
+//        runBlocking {/////////////////////////////////////////////////////////////////
+//            GlobalScope.launch(Dispatchers.IO) {
+//                respuesta = recibirMensaje(input)
+//            }
+//        }
 
-
-//        val message = findViewById<TextView>(R.id.editTextConsulta).text.toString()
-//        // Enviar el mensaje
-//        output.write(message.toByteArray())
-//        output.flush()
-
-        var respuesta:String = ""
         // Leer nuevo mensaje respuesta que mande el servidor
         GlobalScope.launch(Dispatchers.IO) {
-            respuesta = recibirMensaje()
+            recibirMensaje()
         }
-        println("Respuesta del servidor: $respuesta")
-        addNewMensaje("Gepeto", respuesta)
         findViewById<ImageButton>(R.id.buttonEnviar).isEnabled = true
+
+
+//        println("Respuesta del servidor: $respuesta")
     }
 
-    fun recibirMensaje():String {
+
+    //2
+    private fun recibirMensaje() {
         val buffer = ByteArray(1024)
-        val bytesRead = input.read(buffer) /////////////////////////////////////////////////////////////////
-        return String(buffer, 0, bytesRead)
+        val bytesRead = input.read(buffer)
+        CoroutineScope(Dispatchers.Main).launch {
+            addNewMensaje("Gepeto", String(buffer, 0, bytesRead))
+        }
+        println(String(buffer, 0, bytesRead))
     }
-    fun enviarMensaje(texto: String) {
+
+
+    private fun enviarMensaje(texto: String) {
         output.write(texto.toByteArray())
         output.flush()
     }
-
 
 
     // Función para agregar un nuevo mensaje y actualizar el RecyclerView
