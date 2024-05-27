@@ -11,7 +11,6 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miau.sdisandroid.databinding.ActivityMainBinding
@@ -19,8 +18,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import java.io.InputStream
 import java.io.OutputStream
 import java.net.Socket
@@ -119,11 +116,6 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
             enviarMensaje(texto)
         }
-//        runBlocking {/////////////////////////////////////////////////////////////////
-//            GlobalScope.launch(Dispatchers.IO) {
-//                respuesta = recibirMensaje(input)
-//            }
-//        }
 
         // Leer nuevo mensaje respuesta que mande el servidor
         GlobalScope.launch(Dispatchers.IO) {
@@ -155,7 +147,11 @@ class MainActivity : AppCompatActivity() {
 
     // Función para agregar un nuevo mensaje y actualizar el RecyclerView
     private fun addNewMensaje(autor: String, texto: String) {
-        val nuevoMensaje = Mensaje(autor, texto)
+        var imagenSrc = "./usr.png"
+        if (autor == "Gepeto") {
+            imagenSrc = "./gpt.png"
+        }
+        val nuevoMensaje = Mensaje(autor, texto, imagenSrc)
         adapter.addMensaje(nuevoMensaje)
         recyclerView.scrollToPosition(mensajes.size - 1)
     }

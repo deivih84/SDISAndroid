@@ -3,6 +3,7 @@ package com.miau.sdisandroid
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -11,6 +12,7 @@ class MensajeAdapter(private val mensajes: MutableList<Mensaje>) : RecyclerView.
 
     // Definimos el ViewHolder que contendrá las vistas del layout del mensaje
     class MensajeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imageSrc: ImageView = view.findViewById(R.id.imageViewUsuario) // Referencia a la imagen de usuario
         val authorTextView: TextView = view.findViewById(R.id.autorTextView) // Referencia al TextView del autor
         val messageTextView: TextView = view.findViewById(R.id.mensajeTextView) // Referencia al TextView del mensaje
     }
@@ -24,6 +26,9 @@ class MensajeAdapter(private val mensajes: MutableList<Mensaje>) : RecyclerView.
     // Vinculamos los datos del mensaje a las vistas del ViewHolder
     override fun onBindViewHolder(holder: MensajeViewHolder, position: Int) {
         val mensaje = mensajes[position]
+        if (mensaje.imagenSrc == "Gepeto")
+            holder.imageSrc.setImageResource(R.drawable.gpt)
+        else holder.imageSrc.setImageResource(R.drawable.usr)
         holder.authorTextView.text = mensaje.autor
         holder.messageTextView.text = mensaje.texto
     }
