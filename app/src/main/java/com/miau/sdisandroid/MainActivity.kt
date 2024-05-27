@@ -147,10 +147,7 @@ class MainActivity : AppCompatActivity() {
 
     // Función para agregar un nuevo mensaje y actualizar el RecyclerView
     private fun addNewMensaje(autor: String, texto: String) {
-        var imagenSrc = "./usr.png"
-        if (autor == "Gepeto") {
-            imagenSrc = "./gpt.png"
-        }
+        val imagenSrc = if (autor == "Gepeto") 1 else 0
         val nuevoMensaje = Mensaje(autor, texto, imagenSrc)
         adapter.addMensaje(nuevoMensaje)
         recyclerView.scrollToPosition(mensajes.size - 1)

@@ -21,15 +21,15 @@
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:background="#00FFFFFF"
         android:scaleX="1.3"
         android:scaleY="1.3"
         android:src="@drawable/baseline_menu_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021" />
@@ -38,7 +38,7 @@
         android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:background="#00FFFFFF"
         android:scaleX="1.3"
         android:scaleY="1.3"
@@ -53,7 +53,7 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="12dp"
         android:background="#00FFFFFF"
         android:scaleX="1.3"
         android:scaleY="1.3"
@@ -67,7 +67,7 @@
         android:id="@+id/labelTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/lexend_medium"
         android:text="ChatGPT Pasta 🍝"
         android:textColor="#B0B0B0"
@@ -98,10 +98,11 @@
         android:id="@+id/recyclerChat"
         android:layout_width="368dp"
         android:layout_height="639dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextConsulta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelTitulo" />
 
     <ImageButton
         android:id="@+id/buttonEnviar"
@@ -131,23 +132,24 @@
         android:ems="10"
         android:hint="Ip servidor"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/buttonConexion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94" />
+        app:layout_constraintVertical_bias="0.983" />
 
     <Button
         android:id="@+id/buttonConexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="44dp"
         android:onClick="procesarConexionPulsado"
         android:text="Conectar"
         app:layout_constraintBottom_toTopOf="@+id/labelErrores"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

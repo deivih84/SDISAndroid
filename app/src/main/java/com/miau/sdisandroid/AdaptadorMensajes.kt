@@ -26,8 +26,8 @@ class MensajeAdapter(private val mensajes: MutableList<Mensaje>) : RecyclerView.
     // Vinculamos los datos del mensaje a las vistas del ViewHolder
     override fun onBindViewHolder(holder: MensajeViewHolder, position: Int) {
         val mensaje = mensajes[position]
-        if (mensaje.imagenSrc == "Gepeto")
-            holder.imageSrc.setImageResource(R.drawable.gpt)
+        if (mensaje.imagenSrc == 1)
+            holder.imageSrc.setImageResource(R.drawable.a_laughing_matter)
         else holder.imageSrc.setImageResource(R.drawable.usr)
         holder.authorTextView.text = mensaje.autor
         holder.messageTextView.text = mensaje.texto
