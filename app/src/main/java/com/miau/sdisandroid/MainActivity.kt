@@ -107,6 +107,10 @@ class MainActivity : AppCompatActivity() {
         // Accede al RecyclerView inflado
         var editTextConsulta = findViewById<TextView>(R.id.editTextConsulta).text
         val texto = editTextConsulta.toString()
+        if (texto.isBlank()) {
+            findViewById<ImageButton>(R.id.buttonEnviar).isEnabled = true
+            return
+        }
         findViewById<TextView>(R.id.editTextConsulta).text = ""
 
         // Agregar un nuevo mensaje

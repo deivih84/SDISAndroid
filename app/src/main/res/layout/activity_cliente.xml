@@ -117,11 +117,11 @@
         android:saveEnabled="false"
         android:scaleType="center"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextConsulta"
+        app:layout_constraintBottom_toBottomOf="@+id/coso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toEndOf="@+id/editTextConsulta"
-        app:layout_constraintTop_toTopOf="@+id/editTextConsulta"
+        app:layout_constraintTop_toTopOf="@+id/coso"
         app:srcCompat="@drawable/baseline_arrow_upward_24" />
 
     <EditText
