@@ -99,36 +99,37 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("CutPasteId")
+
+
+
+
     fun procesarEnviarPulsado(view: View) {
         findViewById<ImageButton>(R.id.buttonEnviar).isEnabled = false
-        print("Envía un mensaje al servidor: ")
+        print("Envía un mensaje al servidor: ") // En realidad pasará antes por el intermediario
 
-
-        // Accede al RecyclerView inflado
+        // Accede al RecyclerView ya inflado
         var editTextConsulta = findViewById<TextView>(R.id.editTextConsulta).text
         val texto = editTextConsulta.toString()
-        if (texto.isBlank()) {
+        if (texto.isBlank()) { // No enviar mensajes que esten en blanco!!😡
             findViewById<ImageButton>(R.id.buttonEnviar).isEnabled = true
             return
         }
         findViewById<TextView>(R.id.editTextConsulta).text = ""
 
-        // Agregar un nuevo mensaje
-        addNewMensaje("David", texto)
+        // Agregar un nuevo mensaje especificando el usuario y texto
+        addNewMensaje("Usuario", texto)
 
 
         GlobalScope.launch(Dispatchers.IO) {
             enviarMensaje(texto)
         }
 
-        // Leer nuevo mensaje respuesta que mande el servidor
+        // Leer nuevo mensaje respuesta que mande el intermediario
         GlobalScope.launch(Dispatchers.IO) {
             recibirMensaje()
         }
         findViewById<ImageButton>(R.id.buttonEnviar).isEnabled = true
-
-
-//        println("Respuesta del servidor: $respuesta")
     }
 
 
